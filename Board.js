@@ -5,11 +5,12 @@ export class Board{
         this.playing=false;
         this.game_over=false;
         this.bars=[];
+        
         //this.ball=null;
     }
     
     get elements(){
-        let elements = this.bars;
+        let elements = this.bars.map((bar)=>{return bar});
         elements.push(this.ball);
         return elements;
     }

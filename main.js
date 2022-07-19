@@ -41,8 +41,13 @@ class Ball{
         this.speed_y=0;
         this.speed_x=3;
         this.board = board;
+        this.direction=1;
         board.ball=this;
         this.kind="circle";
+    }
+    move(){
+        this.x+=(this.speed_x *this.direction)
+        this.y += (this.speed_y);
     }
 }
 class BoardView{
@@ -65,8 +70,12 @@ class BoardView{
         this.ctx.clearRect(0,0,this.board.width,this.board.height);
     }
     play(){
-        this.clean();
-        this.draw();
+        if(this.board.playing){
+            this.clean();
+            this.draw();
+            this.board.ball.move();
+        }
+        
     }
         
 }
@@ -94,8 +103,13 @@ let canvas = document.getElementById("canvas");
 let board_view=new BoardView(canvas,board);
 let ball= new Ball(350,100,10,board)
 
-
+board_view.draw();
 window.requestAnimationFrame(controller)
+setTimeout(()=>{
+    ball.direction=-1;}
+,3000);
+
+
 document.addEventListener("keydown",(ev)=>{
     ev.preventDefault();
     console.log(ev.code);
@@ -113,6 +127,9 @@ document.addEventListener("keydown",(ev)=>{
     else if(ev.code==="KeyS"){
         console.log("entreabajoS")
         bar2.down();
+    }else if(ev.code==="Space"){
+        console.log("espacio")
+        board.playing= !board.playing;
     }
     
 
