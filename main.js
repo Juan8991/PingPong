@@ -9,6 +9,18 @@ class Bar{
         this.board=board;
         this.board.bars.push(this)
         this.kind="rectangle";
+        this.speed=10;
+    }
+    down(){
+        this.y+=this.speed;
+
+    }
+    up(){
+        this.y-=this.speed;
+
+    }
+    toString(){
+        return "x:"+this.x+"y:"+this.y;
     }
     /* self.Bar.prototype={
         down: function(){
@@ -49,15 +61,27 @@ function draw2(ctx,element){
             }
         } 
     }
+let board = new Board(800,400);
+let bar = new Bar(20,100,40,100,board)
+let bar2 = new Bar(700,100,40,100,board)
+let canvas = document.getElementById("canvas");
+let board_view=new BoardView(canvas,board);
+document.addEventListener("keydown",(ev)=>{
+    console.log(ev.code);
+    if(ev.code==="ArrowUp"){
+        console.log("entrearriba")
+        bar.up();
+    }
+    else if(ev.code==="ArrowDown"){
+        console.log("entreabajo")
+        bar.down();
+    }
+    console.log(bar.toString());
 
+})
 window.addEventListener("load",main)
 
 function main(){
-    let board = new Board(800,400);
-    let bar = new Bar(20,100,40,100,board)
-    let bar2 = new Bar(700,100,40,100,board)
-    let canvas = document.getElementById("canvas");
-    let board_view=new BoardView(canvas,board);
-    console.log(board)
+    
     board_view.draw();
 }
