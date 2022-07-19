@@ -5,7 +5,7 @@ export class Board{
         this.playing=false;
         this.game_over=false;
         this.bars=[];
-        this.ball=null;
+        //this.ball=null;
     }
     
     get elements(){
