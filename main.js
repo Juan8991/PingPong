@@ -159,9 +159,7 @@ let ball= new Ball(350,100,10,board)
 
 board_view.draw();
 window.requestAnimationFrame(controller)
-setTimeout(()=>{
-    ball.direction=-1;}
-,3000);
+
 
 
 document.addEventListener("keydown",(ev)=>{
@@ -169,18 +167,18 @@ document.addEventListener("keydown",(ev)=>{
     console.log(ev.code);
     if(ev.code==="ArrowUp"){
         console.log("entrearriba")
-        bar.up();
+        bar2.up();
     }
     else if(ev.code==="ArrowDown"){
         console.log("entreabajo")
-        bar.down();
+        bar2.down();
     }else if(ev.code==="KeyW"){
         console.log("entrearribaW")
-        bar2.up();
+        bar.up();
     }
     else if(ev.code==="KeyS"){
         console.log("entreabajoS")
-        bar2.down();
+        bar.down();
     }else if(ev.code==="Space"){
         console.log("espacio")
         board.playing= !board.playing;
